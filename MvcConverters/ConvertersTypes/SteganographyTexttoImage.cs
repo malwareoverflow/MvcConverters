@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcConverters.Convert;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace MvcConverters.Converters
 {
-   public class SteganographyTexttoImage
+   public class SteganographyTexttoImage:ConvertMe
     {
         public enum State
         {
@@ -224,6 +225,11 @@ namespace MvcConverters.Converters
             }
 
             return result;
+        }
+
+        public override void Convert()
+        {
+         //convertto steganographic image
         }
     }
 }
