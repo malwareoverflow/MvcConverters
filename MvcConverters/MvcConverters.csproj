@@ -292,20 +292,20 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="ConvertersTypes\HtmltoPdf.cs" />
+    <Compile Include="ConvertersTypes\PdftoHtml.cs" />
+    <Compile Include="ConvertersTypes\PdftoWord.cs" />
+    <Compile Include="ConvertersTypes\WordtoPdf.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DependencyInjectionResolver.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Converters.cs" />
-    <Compile Include="Models\HtmltoPdf.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PdftoHtml.cs" />
-    <Compile Include="Models\PdftoWord.cs" />
-    <Compile Include="Models\SelectList.cs" />
-    <Compile Include="Models\SteganographyTexttoImage.cs" />
-    <Compile Include="Models\WordtoPdf.cs" />
+    <Compile Include="SelectList\SelectList.cs" />
+    <Compile Include="ConvertersTypes\SteganographyTexttoImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

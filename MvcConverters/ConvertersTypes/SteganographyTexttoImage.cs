@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 
-namespace MvcConverters.Models
+namespace MvcConverters.Converters
 {
    public class SteganographyTexttoImage
     {
