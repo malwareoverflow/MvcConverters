@@ -1,5 +1,5 @@
 ﻿using MvcConverters.AbstractRepository;
-using MvcConverters.Converters;
+using MvcConverters.ConvertersTypes;
 using NReco.PdfGenerator;
 using System;
 using System.Collections.Generic;

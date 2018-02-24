@@ -296,7 +296,7 @@
     <Compile Include="ConvertersTypes\PdftoHtml.cs" />
     <Compile Include="ConvertersTypes\PdftoWord.cs" />
     <Compile Include="ConvertersTypes\WordtoPdf.cs" />
-    <Compile Include="Convert\Convert.cs" />
+    <Compile Include="AbstractClasses\Convert.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

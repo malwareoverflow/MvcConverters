@@ -1,11 +1,11 @@
-﻿using MvcConverters.Convert;
+﻿using MvcConverters.AbstractClasses;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
 
-namespace MvcConverters.Converters
+namespace MvcConverters.ConvertersTypes
 {
    public class SteganographyTexttoImage:ConvertMe
     {

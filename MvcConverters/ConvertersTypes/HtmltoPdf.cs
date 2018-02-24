@@ -1,11 +1,12 @@
-﻿using MvcConverters.Convert;
+﻿using MvcConverters.AbstractRepository;
+using MvcConverters.AbstractClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MvcConverters.Converters
+namespace MvcConverters.ConvertersTypes
 {
     public class HtmltoPdf:ConvertMe
     {

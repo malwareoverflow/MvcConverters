@@ -1,5 +1,6 @@
 ﻿using MvcConverters.AbstractRepository;
 using MvcConverters.Models;
+using MvcConverters.Models;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,9 @@ namespace MvcConverters.Infrastructure
         {
             try
             {
+               
                 Bind<ISelectList>().To<SelectList>();
+                Bind<IConveters>().To<Converters>();
             }
             catch (Exception)
             {
