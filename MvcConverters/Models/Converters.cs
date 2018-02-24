@@ -1,4 +1,5 @@
-﻿using MvcConverters.AbstractRepository;
+﻿using MvcConverters.AbstractClasses;
+using MvcConverters.AbstractRepository;
 using MvcConverters.ConvertersTypes;
 using NReco.PdfGenerator;
 using System;
@@ -14,7 +15,7 @@ namespace MvcConverters.Models
 {
     public class Converters : IConveters
     {
-
+       
 
         public HttpResponseMessage HtmltoPdf(HtmltoPdf model)
         {

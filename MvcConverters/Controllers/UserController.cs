@@ -15,18 +15,20 @@ namespace MvcConverters.Controllers
     {
         private IKernel kernel;
         private readonly ISelectList selectlistRepo;
-
+        private readonly IConveters convertersRepo;
 
         public UserController()
         {
             kernel = new StandardKernel(new DependencyInjectionResolver());
 
-
+            convertersRepo = kernel.Get<IConveters>();
             selectlistRepo = kernel.Get<ISelectList>();
         }
         [Authorize]
         public ActionResult Dashboard()
         {
+
+            convertersRepo.PdftoHtml(new ConvertersTypes.PdftoHtml());
             selectlistRepo.Addtolist("Pdf", "Pdf");
             selectlistRepo.Addtolist("Word", "Word");
             ViewBag.listfrom = selectlistRepo.getList();
