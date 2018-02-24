@@ -24,6 +24,7 @@ namespace MvcConverters.Controllers
 
             selectlistRepo = kernel.Get<ISelectList>();
         }
+        [Authorize]
         public ActionResult Dashboard()
        {
             selectlistRepo.Addtolist("Pdf", "Pdf");

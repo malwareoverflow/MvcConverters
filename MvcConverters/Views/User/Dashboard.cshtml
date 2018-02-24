@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
 }
-
+<h1>Welcome @User.Identity.Name</h1>
 
 @Html.Partial("HtmltoPdf")
 @Html.Partial("PdftoHtml")
@@ -10,6 +10,6 @@
 
 @section Scripts{
     <script src="~/Scripts/UserDashboard.js"></script>
-
+    <script src="~/Scripts/Fileextensionvalidator.js"></script>
 }
 

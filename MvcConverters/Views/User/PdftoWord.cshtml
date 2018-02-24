@@ -1,16 +1,15 @@
 ﻿
 @model MvcConverters.Models.PdftoWord
-<h2>Pdf to Word</h2>
-@using (Html.BeginForm("Dashboard", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+<h3>Pdf to Word</h3>
+@using (Html.BeginForm("Dashboard", "User", FormMethod.Post, new { enctype = "multipart/form-data" , onsubmit = "Validate(this)" }))
 {
     @Html.Label("From");
     @Html.DropDownList("listfrom", (IEnumerable<SelectListItem>)ViewBag.listfrom, "Select From");
     @Html.Label("To");
     @Html.DropDownList("listto", (IEnumerable<SelectListItem>)ViewBag.listto, "Select To");
-
+    <label for="file">Choose File:</label>
+    <input type="file" name="file" id="file" />
+    <input type="submit" class="btn btn-primary" value="Convert" id="btntype1" o />
 }
 
 
-<label for="file">Choose File:</label>
-<input type="file" name="file" id="file" />
-<input type="submit" class="btn btn-primary" value="Convert" id="btntype1" onclick="Validate(this)" />
