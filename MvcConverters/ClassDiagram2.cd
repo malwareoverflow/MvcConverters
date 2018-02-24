@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MvcConverters.AbstractClasses.ConvertMe">
+    <Position X="4.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractClasses\Convert.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcConverters.ConvertersTypes.HtmltoPdf">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAQAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConvertersTypes\HtmltoPdf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcConverters.ConvertersTypes.PdftoHtml">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConvertersTypes\PdftoHtml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcConverters.ConvertersTypes.PdftoWord">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConvertersTypes\PdftoWord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcConverters.ConvertersTypes.SteganographyTexttoImage">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MvcConverters.ConvertersTypes.SteganographyTexttoImage.State" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ConvertersTypes\SteganographyTexttoImage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAIAAAAAAQAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>ConvertersTypes\SteganographyTexttoImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcConverters.ConvertersTypes.WordtoPdf">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConvertersTypes\WordtoPdf.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MvcConverters.Models.Converters">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAAAEQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Converters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MvcConverters.Models.SelectList">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>SelectList\SelectList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MvcConverters.AbstractRepository.IConveters">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAAAEQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractRepository\IConveters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MvcConverters.AbstractRepository.ISelectList">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>AbstractRepository\ISelectList.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
