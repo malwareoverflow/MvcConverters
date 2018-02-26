@@ -1,15 +1,24 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <style>
+        .navlinkclass {
+            color: black;
+            font-family: fantasy;
+            font-size: 15px;
+        }
+    </style>
+    <div class="navbar navbar-fixed-top " style="background-color:white; border-top:solid 4px ">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,25 +26,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Converters", "Dashboard", "User", new { area = "" }, new { @class = "navbar-brand" })
+                @*@Html.ActionLink("Convert Easy  ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Dashboard", "Dashboard", "User")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Convertor", "Index", "Home", new { @class = "navlinkclass" })</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home", new { @class = "navlinkclass" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "navlinkclass" })</li>*@
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
+
+
+    <hr style="background-color:transparent" />
+
     <div class="container body-content">
+
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+
     </div>
+    <footer class="panel-footer navbar-fixed-bottom">
+        <p> Powered by M.Faisal And Taha Tehmuri  &copy;Copyright 2018</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
