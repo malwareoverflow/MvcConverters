@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 
 namespace MvcConverters.ConvertersTypes
@@ -13,9 +14,10 @@ namespace MvcConverters.ConvertersTypes
         [Required, FileExtensions(Extensions = ".pdf", ErrorMessage = "Incorrect file format")]
         public HttpPostedFileBase File { get; set; }
 
-        public override void Convert()
+        public override HttpResponseMessage Convert()
         {
-           //convert to html
+            //convert to html
+            return null;
         }
     }
 }

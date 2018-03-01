@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
@@ -45,12 +46,13 @@ namespace MvcConverters.Controllers
             return View();
         }
       [HttpPost]
-      public ActionResult Dashboard(HttpPostedFileBase file,string typeofmodel)
+      public HttpResponseMessage Dashboard(HttpPostedFileBase file,string typeofmodel)
         {
            
             Type model = Type.GetType($"MvcConverters.ConvertersTypes.{typeofmodel}");
             if (model!=null)
             {
+              
                 object modelInstance = Activator.CreateInstance(model);
                 PropertyInfo properties = modelInstance.GetType().GetProperty("File", BindingFlags.Public | BindingFlags.Instance);
                 if (null != properties && properties.CanWrite)
@@ -61,12 +63,12 @@ namespace MvcConverters.Controllers
         
                 MethodInfo method = modelInstance.GetType().GetMethod("Convert");
                 //object[] parametersArray = new object[] { "Hello" };
-                method.Invoke(modelInstance, null);
-                ViewBag.Status = "Done";
+                return (HttpResponseMessage) method.Invoke(modelInstance, null);
+                
             }
       
 
-            return View();
+            return new HttpResponseMessage();
 
         }
 

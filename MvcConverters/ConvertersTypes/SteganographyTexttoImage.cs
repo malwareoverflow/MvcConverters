@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 
 namespace MvcConverters.ConvertersTypes
@@ -227,9 +228,10 @@ namespace MvcConverters.ConvertersTypes
             return result;
         }
 
-        public override void Convert()
+        public override HttpResponseMessage Convert()
         {
-         //convertto steganographic image
+            //convertto steganographic image
+            return null;
         }
     }
 }
