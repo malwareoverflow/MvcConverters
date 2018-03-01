@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace MvcConverters.Controllers
 {
+    //PLEASE DO NOT DELETE ANY COMMENT....//
     public class UserController : Controller
     {
         private IKernel kernel;
@@ -32,7 +33,10 @@ namespace MvcConverters.Controllers
         }
 
 
-      
+      /// <summary>
+      /// Get the Dashboard
+      /// </summary>
+      /// <returns></returns>
         public ActionResult Dashboard()
         {
             methodsRepo.Addtolist("HtmltoPdf");
@@ -47,24 +51,30 @@ namespace MvcConverters.Controllers
             return View();
         }
 
-
-
+ 
+        /// <summary>
+        /// /Post file and download output
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="typeofmodel"></param>
+        /// <returns></returns>
         [HttpPost]
         public HttpResponseMessage Dashboard(HttpPostedFileBase file,string typeofmodel)
         {
-          
+            //Fetching assembly
             Type model = Type.GetType($"{Assembly.GetExecutingAssembly().GetName().Name}.ConvertersTypes.{typeofmodel}");
             if (model!=null)
             {
-              
+              //Initializing assembly
                 object modelInstance = Activator.CreateInstance(model);
+                //Reading properties
                 PropertyInfo properties = modelInstance.GetType().GetProperty("File", BindingFlags.Public | BindingFlags.Instance);
                 if (null != properties && properties.CanWrite)
                 {
                     properties.SetValue(modelInstance, file);
                 }
              
-        
+                //Calling method of assembly
                 MethodInfo method = modelInstance.GetType().GetMethod("Convert");
 
 
