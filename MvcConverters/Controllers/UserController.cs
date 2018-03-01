@@ -47,13 +47,13 @@ namespace MvcConverters.Controllers
             return View();
         }
 
-      
 
-      [HttpPost]
-      public HttpResponseMessage Dashboard(HttpPostedFileBase file,string typeofmodel)
+
+        [HttpPost]
+        public HttpResponseMessage Dashboard(HttpPostedFileBase file,string typeofmodel)
         {
-           
-            Type model = Type.GetType($"MvcConverters.ConvertersTypes.{typeofmodel}");
+          
+            Type model = Type.GetType($"{Assembly.GetExecutingAssembly().GetName().Name}.ConvertersTypes.{typeofmodel}");
             if (model!=null)
             {
               
