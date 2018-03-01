@@ -8,8 +8,10 @@
     @Html.DropDownList("listfrom", (IEnumerable<SelectListItem>)ViewBag.listfrom, "Select From");
     @Html.Label("To");
     @Html.DropDownList("listto", (IEnumerable<SelectListItem>)ViewBag.listto, "Select To");
+   
     <label for="file">Choose File:</label>
     <input type="file" name="file" id="file" />
+    <input type="hidden" name="typeofmodel" value="HtmltoPdf" />
     <input type="submit" class="btn btn-primary" value="Convert" id="btntype1"  />
 }
 

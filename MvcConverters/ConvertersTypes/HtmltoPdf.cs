@@ -12,7 +12,7 @@ namespace MvcConverters.ConvertersTypes
     {
 
         [Required, FileExtensions(Extensions = ".html", ErrorMessage = "Incorrect file format")]
-        public HttpPostedFileBase Html { get; set; }
+        public HttpPostedFileBase File { get; set; }
         [Display(Name = "Name")]
         public string Name { get; set; }
 

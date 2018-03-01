@@ -11,7 +11,7 @@ namespace MvcConverters.ConvertersTypes
     {
         public string Name { get; set; }
         [Required, FileExtensions(Extensions = ".docx,.docm,.dotx", ErrorMessage = "Incorrect file format")]
-        public HttpPostedFileBase Word { get; set; }
+        public HttpPostedFileBase File { get; set; }
 
         public override void Convert()
         {

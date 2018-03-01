@@ -9,6 +9,7 @@
     @Html.DropDownList("listto", (IEnumerable<SelectListItem>)ViewBag.listto, "Select To");
     <label for="file">Choose File:</label>
     <input type="file" name="file" id="file" />
+    <input type="hidden" name="typeofmodel" value="PdftoWord" />
     <input type="submit" class="btn btn-primary" value="Convert" id="btntype1" o />
 }
 

@@ -283,6 +283,7 @@
   <ItemGroup>
     <Compile Include="AbstractRepository\IConveters.cs" />
     <Compile Include="AbstractRepository\ISelectList.cs" />
+    <Compile Include="AbstractRepository\IMethods.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -302,6 +303,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DependencyInjectionResolver.cs" />
+    <Compile Include="Method\Methods.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Converters.cs" />
     <Compile Include="Models\IdentityModels.cs" />

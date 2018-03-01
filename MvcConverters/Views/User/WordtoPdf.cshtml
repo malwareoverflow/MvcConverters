@@ -3,14 +3,15 @@
 @model MvcConverters.ConvertersTypes.WordtoPdf
 
 <h3>Word to Pdf</h3>
-@using (Html.BeginForm("Dashboard", "User", FormMethod.Post, new { enctype = "multipart/form-data" , onsubmit = "Validate(this)" }))
+@using (Html.BeginForm("Dashboard", "User", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "Validate(this)" }))
 {
     @Html.Label("From");
     @Html.DropDownList("listfrom", (IEnumerable<SelectListItem>)ViewBag.listfrom, "Select From");
     @Html.Label("To");
     @Html.DropDownList("listto", (IEnumerable<SelectListItem>)ViewBag.listto, "Select To");
     <input type="file" name="file" id="file" />
-    <input type="submit" class="btn btn-primary" value="Convert" id="btntype1"  />
+    <input type="hidden" name="typeofmodel" value="WordtoPdf" />
+    <input type="submit" class="btn btn-primary" value="Convert" id="btntype1" />
 }
 
 

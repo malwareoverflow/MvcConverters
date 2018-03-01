@@ -11,7 +11,7 @@ namespace MvcConverters.ConvertersTypes
     {
         public string Name { get; set; }
         [Required, FileExtensions(Extensions = ".pdf", ErrorMessage = "Incorrect file format")]
-        public HttpPostedFileBase Pdf { get; set; }
+        public HttpPostedFileBase File { get; set; }
 
         public override void Convert()
         {

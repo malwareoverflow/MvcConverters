@@ -1,15 +1,22 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Dashboard";
 }
 <h1>Welcome @User.Identity.Name</h1>
 
-@Html.Partial("HtmltoPdf")
-@Html.Partial("PdftoHtml")
-@Html.Partial("PdftoWord")
-@Html.Partial("WordtoPdf")
-
-@section Scripts{
-    <script src="~/Scripts/UserDashboard.js"></script>
-    <script src="~/Scripts/Fileextensionvalidator.js"></script>
+@foreach (string item in ViewBag.RenderView)
+{
+    @Html.Partial(item)
+   
 }
 
+
+
+
+
+@section scripts{
+
+    <script src="~/Scripts/UserDashboard.js"></script>
+    <script src="~/Scripts/Fileextensionvalidator.js"></script>
+
+}

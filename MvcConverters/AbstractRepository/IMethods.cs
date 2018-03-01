@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace MvcConverters.AbstractRepository
 {
-    interface ISelectList
+    interface IMethods
     {
 
-        void Addtolist(string Text, string Value);
-
-        IEnumerable<SelectListItem> getList();
-        void Clearlist();
-
+        void Addtolist(dynamic Name);
+        List<dynamic> getList();
     }
 }

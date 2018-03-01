@@ -13,7 +13,10 @@ namespace MvcConverters.Models
 
 
         List<SelectListItem> listitems = new List<SelectListItem>();
-
+        public void Clearlist()
+        {
+            listitems.Clear();
+        }
         public void Addtolist(string Text, string Value)
         {
 

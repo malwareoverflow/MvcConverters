@@ -25,7 +25,7 @@ namespace MvcConverters.Models
             var pdfContentType = "application/pdf";
             // processing the stream.
 
-            stream.Write(htmlToPdf.GeneratePdf(new StreamReader(model.Html.InputStream).ReadToEnd(), null), 0, htmlToPdf.GeneratePdf(new StreamReader(model.Html.InputStream).ReadToEnd(), null).Length);
+            stream.Write(htmlToPdf.GeneratePdf(new StreamReader(model.File.InputStream).ReadToEnd(), null), 0, htmlToPdf.GeneratePdf(new StreamReader(model.File.InputStream).ReadToEnd(), null).Length);
 
             var result = new HttpResponseMessage(HttpStatusCode.OK)
             {
