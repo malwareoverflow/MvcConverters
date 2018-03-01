@@ -19,6 +19,7 @@ namespace MvcConverters.Controllers
         private readonly ISelectList selectlistRepo;
         private readonly IConveters convertersRepo;
         private readonly IMethods methodsRepo;
+
         public UserController()
 
 
@@ -45,6 +46,9 @@ namespace MvcConverters.Controllers
             ViewBag.listto = selectlistRepo.getList();
             return View();
         }
+
+      
+
       [HttpPost]
       public HttpResponseMessage Dashboard(HttpPostedFileBase file,string typeofmodel)
         {
@@ -59,14 +63,17 @@ namespace MvcConverters.Controllers
                 {
                     properties.SetValue(modelInstance, file);
                 }
-
+             
         
                 MethodInfo method = modelInstance.GetType().GetMethod("Convert");
+
+
                 //object[] parametersArray = new object[] { "Hello" };
-                return (HttpResponseMessage) method.Invoke(modelInstance, null);
-                
+         
+                return (HttpResponseMessage)method.Invoke(modelInstance, null);
+
             }
-      
+
 
             return new HttpResponseMessage();
 
