@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -14,7 +15,7 @@ namespace MvcConverters.ConvertersTypes
         [Required, FileExtensions(Extensions = ".pdf", ErrorMessage = "Incorrect file format")]
         public HttpPostedFileBase File { get; set; }
         public string ContentType { get; set; } = "application/docx";
-        public override HttpResponseMessage Convert()
+        public override MemoryStream Convert()
         {
             // pdftoword convertion here
             return null;
