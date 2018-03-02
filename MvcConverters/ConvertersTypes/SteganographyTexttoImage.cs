@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
@@ -10,6 +11,8 @@ namespace MvcConverters.ConvertersTypes
 {
    public class SteganographyTexttoImage:ConvertMe
     {
+
+        public string ContentType { get; set; } = "application/jpeg";
         public enum State
         {
             Hiding,
@@ -228,7 +231,7 @@ namespace MvcConverters.ConvertersTypes
             return result;
         }
 
-        public override HttpResponseMessage Convert()
+        public override MemoryStream Convert()
         {
             //convertto steganographic image
             return null;
