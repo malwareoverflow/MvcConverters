@@ -13,7 +13,7 @@ using System.Net.Http.Headers;
 
 namespace MvcConverters.ConvertersTypes
 {
-    public class HtmltoPdf:ConvertMe
+    public class HtmltoPdf
     {
 
         [Required, FileExtensions(Extensions = ".html", ErrorMessage = "Incorrect file format")]
@@ -21,34 +21,35 @@ namespace MvcConverters.ConvertersTypes
         [Display(Name = "Name")]
         public string Name { get; set; }
 
+        public string ContentType { get; set; } = "application/pdf";
 
-        public override HttpResponseMessage Convert()
+        public  MemoryStream Convert()
         {
             // htmltopdf convertion here
             var htmlToPdf = new HtmlToPdfConverter();
 
             var stream = new MemoryStream();
-            var pdfContentType = "application/pdf";
+       
             // processing the stream.
             BinaryReader b = new BinaryReader(File.InputStream);
             byte[] binData = b.ReadBytes(File.ContentLength);
 
             string html = System.Text.Encoding.UTF8.GetString(binData);
             stream.Write(htmlToPdf.GeneratePdf(html, null), 0, htmlToPdf.GeneratePdf(html, null).Length);
+            return stream;
+            //var result = new HttpResponseMessage(HttpStatusCode.OK)
+            //{
+            //    Content = new ByteArrayContent(stream.ToArray())
+            //};
+            //result.Content.Headers.ContentDisposition =
+            //    new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
+            //    {
+            //        FileName = "Htmltopdf.pdf"
+            //    };
+            //result.Content.Headers.ContentType =
+            //    new MediaTypeHeaderValue(pdfContentType);
 
-            var result = new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new ByteArrayContent(stream.ToArray())
-            };
-            result.Content.Headers.ContentDisposition =
-                new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
-                {
-                    FileName = "Htmltopdf.pdf"
-                };
-            result.Content.Headers.ContentType =
-                new MediaTypeHeaderValue(pdfContentType);
-
-            return result;
+            //return result;
         }
     }
 }

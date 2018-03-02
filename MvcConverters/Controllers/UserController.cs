@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 using System.Web.Mvc;
 
@@ -33,10 +34,10 @@ namespace MvcConverters.Controllers
         }
 
 
-      /// <summary>
-      /// Get the Dashboard
-      /// </summary>
-      /// <returns></returns>
+        /// <summary>
+       /// Get the Dashboard
+       /// </summary>
+       /// <returns></returns>
         public ActionResult Dashboard()
         {
             methodsRepo.Addtolist("HtmltoPdf");
@@ -59,8 +60,9 @@ namespace MvcConverters.Controllers
         /// <param name="typeofmodel"></param>
         /// <returns></returns>
         [HttpPost]
-        public HttpResponseMessage Dashboard(HttpPostedFileBase file,string typeofmodel)
+        public ActionResult Dashboard(HttpPostedFileBase file,string typeofmodel)
         {
+          
             //Fetching assembly
             Type model = Type.GetType($"{Assembly.GetExecutingAssembly().GetName().Name}.ConvertersTypes.{typeofmodel}");
             if (model!=null)
@@ -77,15 +79,25 @@ namespace MvcConverters.Controllers
                 //Calling method of assembly
                 MethodInfo method = modelInstance.GetType().GetMethod("Convert");
 
-
                 //object[] parametersArray = new object[] { "Hello" };
-         
-                return (HttpResponseMessage)method.Invoke(modelInstance, null);
+
+                byte[] ObjectToByteArray(object obj)
+                {
+                    if (obj == null)
+                        return null;
+                    BinaryFormatter bf = new BinaryFormatter();
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        bf.Serialize(ms, obj);
+                        return ms.ToArray();
+                    }
+                }
+                return File(ObjectToByteArray(method.Invoke(modelInstance, null)),modelInstance.GetType().GetProperty("ContentType").GetValue(modelInstance,null).ToString(),typeofmodel);
 
             }
 
-
-            return new HttpResponseMessage();
+            return View();
+         //   return new HttpResponseMessage();
 
         }
 

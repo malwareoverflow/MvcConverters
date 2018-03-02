@@ -13,7 +13,7 @@ namespace MvcConverters.ConvertersTypes
         public string Name { get; set; }
         [Required, FileExtensions(Extensions = ".docx,.docm,.dotx", ErrorMessage = "Incorrect file format")]
         public HttpPostedFileBase File { get; set; }
-
+        public string ContentType { get; set; } = "application/pdf";
         public override HttpResponseMessage Convert()
         {
             //convert word to pdf here
