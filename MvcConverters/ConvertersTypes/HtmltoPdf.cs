@@ -36,6 +36,8 @@ namespace MvcConverters.ConvertersTypes
 
             string html = System.Text.Encoding.UTF8.GetString(binData);
             stream.Write(htmlToPdf.GeneratePdf(html, null), 0, htmlToPdf.GeneratePdf(html, null).Length);
+            stream.Flush();
+            stream.Close();
             return stream;
          
         }

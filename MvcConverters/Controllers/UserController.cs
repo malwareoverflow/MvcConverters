@@ -76,8 +76,8 @@ namespace MvcConverters.Controllers
                     properties.SetValue(modelInstance, file);
                 }
              
-                //Calling method of assembly
-                MethodInfo method = modelInstance.GetType().GetMethod("Convert");
+                 //Calling method of assembly
+                 MethodInfo method = modelInstance.GetType().GetMethod("Convert");
 
                 //object[] parametersArray = new object[] { "Hello" };
 
@@ -92,7 +92,10 @@ namespace MvcConverters.Controllers
                         return ms.ToArray();
                     }
                 }
-                return File(ObjectToByteArray(method.Invoke(modelInstance, null)),modelInstance.GetType().GetProperty("ContentType").GetValue(modelInstance,null).ToString(),typeofmodel);
+                string ContentType = modelInstance.GetType().GetProperty("ContentType").GetValue(modelInstance, null).ToString();
+                FileContentResult filecontent = new FileContentResult(ObjectToByteArray(method.Invoke(modelInstance, null)), ContentType);
+                return filecontent;
+               // return File(ObjectToByteArray(method.Invoke(modelInstance, null)),ContentType,typeofmodel);
 
             }
 
