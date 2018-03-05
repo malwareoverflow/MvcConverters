@@ -20,9 +20,7 @@ namespace MvcConverters.ConvertersTypes
         {
 
        
-            //PDDocument doc = null;
-            //var stream = new MemoryStream();
-            //var fileName = Path.GetFileName(File.FileName);
+          
             string newfilename = DateTime.Now.ToString("yyyyMMdd_hhmmss");
 
             File.SaveAs(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/test/"),$"{newfilename}.pdf"));
@@ -36,6 +34,7 @@ namespace MvcConverters.ConvertersTypes
                 f.OpenPdf(pdfStream);
                 if (f.PageCount > 0)
                 {
+                 
 
                     int res = f.ToWord(docxStream);
                     if (res == 0)
