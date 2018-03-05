@@ -9,7 +9,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body style="background-color:#c8d8b6">
+<body style="background-color:white">
     <style>
         .navlinkclass {
             color: black;
@@ -24,7 +24,7 @@
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: white;
+            background-color: #48c4b8;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 10px;
@@ -36,7 +36,7 @@
                 padding: 8px 8px 8px 32px;
                 text-decoration: none;
                 font-size: 15px;
-                color: green;
+                color: black;
                 display: block;
                 transition: 0.3s;
             }
@@ -61,7 +61,7 @@
             margin-left: 50px;
         }
     </style>
-    <div class="navbar navbar-fixed-top " style="background-color:white; border-bottom:solid 1px pink ">
+    <div class="navbar navbar-fixed-top " style="background-color:#48c4b8; border-bottom:solid 2px pink ">
 
         <div class="container">
             <div class="navbar-header">
@@ -75,7 +75,10 @@
 
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Convertor", "Index", "Home", new { @class = "navlinkclass" })</li>
+                    <li>@Html.ActionLink("File Converters", "Index", "Home", new { @class = "navlinkclass" })</li>
+                    <li>@Html.ActionLink("Image Converters", "Index", "Home", new { @class = "navlinkclass" })</li>
+                    <li>@Html.ActionLink("Voice Convertor", "Index", "Home", new { @class = "navlinkclass" })</li>
+
 
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
@@ -104,7 +107,7 @@
 
     <hr style="background-color:transparent"/>
 
-    <div id="mainbody" class="container body-content">
+    <div id="mainbody" class="container body-content" style="border:solid 2px pink">
 
         @RenderBody()
 
@@ -124,15 +127,13 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
     //document.getElementById("main").style.marginLeft = "250px";
     document.getElementById("mainbody").style.marginLeft = "250px";
-    $("#main").hide();
-    $("#close").show();
+    
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "20px";
-    document.getElementById("main").style.marginLeft = "10px";
-    document.getElementById("mainbody").style.marginLeft = "35px";
-    $("#main").show();
-    $("#close").hide();
+    
+    document.getElementById("mainbody").style.marginLeft = "50px";
+  
 }
 </script>
