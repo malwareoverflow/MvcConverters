@@ -143,8 +143,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="SautinSoft.PdfFocus, Version=6.7.12.11, Culture=neutral, PublicKeyToken=0b79b934109b3e9e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\SautinSoft.PdfFocus.dll</HintPath>
+      <HintPath>..\packages\sautinsoft.pdffocus.6.7.12.11\lib\net461\SautinSoft.PdfFocus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
