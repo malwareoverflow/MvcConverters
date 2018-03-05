@@ -17,6 +17,25 @@ namespace MvcConverters.ConvertersTypes
         public string ContentType { get; set; } = "application/html";
         public override MemoryStream Convert()
         {
+
+            string pathToPdf = @"d:\simple text.pdf";
+            string pathToWord = @"d:\result.doc";
+
+            //Convert PDF file to Word file
+            SautinSoft.PdfFocus f = new SautinSoft.PdfFocus();
+
+            f.OpenPdf(File.FileName);
+
+            if (f.PageCount > 0)
+            {
+                int result = f.ToWord(pathToWord);
+
+                //Show Word document
+                if (result == 0)
+                {
+                    System.Diagnostics.Process.Start(pathToWord);
+                }
+            }
             //convert to html
             return null;
         }
