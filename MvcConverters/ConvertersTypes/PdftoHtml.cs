@@ -18,24 +18,33 @@ namespace MvcConverters.ConvertersTypes
         public override MemoryStream Convert()
         {
 
-            string pathToPdf = @"d:\simple text.pdf";
-            string pathToWord = @"d:\result.doc";
 
-            //Convert PDF file to Word file
+            string newfilename = DateTime.Now.ToString("yyyyMMdd_hhmmss");
+
+            File.SaveAs(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/test/"), $"{newfilename}.pdf"));
+            string pdfFile = System.Web.HttpContext.Current.Server.MapPath($"~/test/{newfilename}.pdf");
+            MemoryStream docxStream = new MemoryStream();
             SautinSoft.PdfFocus f = new SautinSoft.PdfFocus();
-
-            f.OpenPdf(File.FileName);
-
-            if (f.PageCount > 0)
+            using (FileStream pdfStream = new FileStream(pdfFile, FileMode.Open, FileAccess.Read))
             {
-                int result = f.ToWord(pathToWord);
 
-                //Show Word document
-                if (result == 0)
+                f.OpenPdf(pdfStream);
+                if (f.PageCount > 0)
                 {
-                    System.Diagnostics.Process.Start(pathToWord);
+                    int result = f.ToHtml(System.Web.HttpContext.Current.Server.MapPath($"~/test/{newfilename}.html"));
+
+                    //Show Word document
+                    if (result == 0)
+                    {
+                        string htmlFile = Path.ChangeExtension(pdfFile, ".html");
+                        System.IO.File.WriteAllBytes(htmlFile, docxStream.ToArray());
+                        System.Diagnostics.Process.Start(htmlFile);
+                    }
                 }
             }
+          
+
+           
             //convert to html
             return null;
         }
