@@ -1,6 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,52 +8,131 @@
     @Styles.Render("~/Content/css")
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
-<body>
+<body style="background-color:#c8d8b6">
     <style>
         .navlinkclass {
             color: black;
             font-family: fantasy;
             font-size: 15px;
         }
+
+        .sidenav {
+            height: 84%;
+            width: 25px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 10px;
+            border: solid 1px pink;
+            margin-top: 68px;
+        }
+
+            .sidenav a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 15px;
+                color: green;
+                display: block;
+                transition: 0.3s;
+            }
+
+        .menubtn {
+            background: #0000ff00;
+            border: solid 1px #c8d8b6;
+        }
+
+            .menubtn:hover {
+                background-color: bisque;
+            }
+
+        .sidenav a:hover {
+            color: orange;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
     </style>
-    <div class="navbar navbar-fixed-top " style="background-color:white; border-top:solid 4px ">
+    <div class="navbar navbar-fixed-top " style="background-color:white; border-bottom:solid 1px pink ">
+
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
                 </button>
                 @*@Html.ActionLink("Convert Easy  ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Convertor", "Index", "Home", new { @class = "navlinkclass" })</li>
-                    @*<li>@Html.ActionLink("About", "About", "Home", new { @class = "navlinkclass" })</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "navlinkclass" })</li>*@
+
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
 
+    <div id="mySidenav" class="sidenav " onmouseover="openNav()" onmouseout="closeNav()">
 
-    <hr style="background-color:transparent" />
+        <h5 style="color:black; margin-left:20px;"> Convert Your Desire Format</h5>
+        <img src="~/Content/images.jpg" />
+        <hr />
+        <ul class="list-unstyled">
 
-    <div class="container body-content">
+            <li> <a href="#" class="menubtn">Html To Pdf</a> </li>
+
+            <li>  <a href="#" class="menubtn">pdf to word</a></li>
+
+            <li> <a href="#" class="menubtn">word to pdf</a></li>
+
+           
+
+        </ul>
+    </div>
+
+
+    <hr style="background-color:transparent"/>
+
+    <div id="mainbody" class="container body-content">
 
         @RenderBody()
 
 
     </div>
-    <footer class="panel-footer navbar-fixed-bottom">
+    <footer class="panel-footer navbar-fixed-bottom" style="height:35px">
         <p> Powered by M.Faisal And Taha Tehmuri  &copy;Copyright 2018</p>
     </footer>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "200px";
+    //document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mainbody").style.marginLeft = "250px";
+    $("#main").hide();
+    $("#close").show();
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "20px";
+    document.getElementById("main").style.marginLeft = "10px";
+    document.getElementById("mainbody").style.marginLeft = "35px";
+    $("#main").show();
+    $("#close").hide();
+}
+</script>
