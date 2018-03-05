@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -60,7 +61,7 @@ namespace MvcConverters.Controllers
         /// <param name="typeofmodel"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Dashboard(HttpPostedFileBase file,string typeofmodel)
+        public async Task<ActionResult> Dashboard(HttpPostedFileBase file,string typeofmodel)
         {
           
             //Fetching assembly
@@ -92,10 +93,10 @@ namespace MvcConverters.Controllers
                         return ms.ToArray();
                     }
                 }
-                string ContentType = modelInstance.GetType().GetProperty("ContentType").GetValue(modelInstance, null).ToString();
-                FileContentResult filecontent = new FileContentResult(ObjectToByteArray(method.Invoke(modelInstance, null)), ContentType);
+                string ContentType =  modelInstance.GetType().GetProperty("ContentType").GetValue(modelInstance, null).ToString();
+                FileContentResult filecontent = new FileContentResult( ObjectToByteArray( method.Invoke(modelInstance, null)), ContentType);
                 return filecontent;
-               // return File(ObjectToByteArray(method.Invoke(modelInstance, null)),ContentType,typeofmodel);
+             
 
             }
 

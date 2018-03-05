@@ -1,4 +1,5 @@
 ﻿using MvcConverters.AbstractClasses;
+using NReco.PdfGenerator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,7 +18,6 @@ namespace MvcConverters.ConvertersTypes
         public string ContentType { get; set; } = "application/pdf";
         public override MemoryStream Convert()
         {
-            //convert word to pdf here
             return null;
         }
     }
