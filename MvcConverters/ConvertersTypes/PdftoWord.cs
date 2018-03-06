@@ -25,7 +25,7 @@ namespace MvcConverters.ConvertersTypes
 
             File.SaveAs(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/test/"),$"{newfilename}.pdf"));
             string pdfFile = System.Web.HttpContext.Current.Server.MapPath($"~/test/{newfilename}.pdf");
-            MemoryStream docxStream = new MemoryStream();
+            MemoryStream stream = new MemoryStream();
             SautinSoft.PdfFocus f = new SautinSoft.PdfFocus();
 
             using (FileStream pdfStream = new FileStream(pdfFile, FileMode.Open, FileAccess.Read))
@@ -36,12 +36,12 @@ namespace MvcConverters.ConvertersTypes
                 {
                  
 
-                    int res = f.ToWord(docxStream);
+                    int res = f.ToWord(stream);
                     if (res == 0)
                     {
 
                         string docxFile = Path.ChangeExtension(pdfFile, ".docx");
-                      System.IO.File.WriteAllBytes(docxFile, docxStream.ToArray());
+                      System.IO.File.WriteAllBytes(docxFile, stream.ToArray());
                         System.Diagnostics.Process.Start(docxFile);
                     }
                 }
@@ -53,13 +53,13 @@ namespace MvcConverters.ConvertersTypes
                 byte[] bytes = new byte[file.Length];
                 file.Read(bytes, 0, (int)file.Length);
                 ms.Write(bytes, 0, (int)file.Length);
-                docxStream = ms;
-                docxStream.Flush();
-                docxStream.Close();
+                stream = ms;
+                stream.Flush();
+                stream.Close();
             }
 
 
-            return docxStream;
+            return stream;
 
         }
 

@@ -20,7 +20,7 @@ namespace MvcConverters.ConvertersTypes
         public override MemoryStream Convert()
         {
             Word2Pdf objWorPdf = new Word2Pdf();
-            MemoryStream docxStream = new MemoryStream();
+            MemoryStream stream = new MemoryStream();
             string newfilename = DateTime.Now.ToString("yyyyMMdd_hhmmss");
 
             File.SaveAs(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/test/"), $"{newfilename}{Path.GetExtension(File.FileName)}"));
@@ -36,8 +36,12 @@ namespace MvcConverters.ConvertersTypes
                 objWorPdf.InputLocation = FromLocation;
                 objWorPdf.OutputLocation = ToLocation;
                 objWorPdf.Word2PdfCOnversion();
+                stream.Write(System.IO.File.ReadAllBytes(ToLocation.ToString()), 0, System.IO.File.ReadAllBytes(ToLocation.ToString()).Length);
+                stream.Flush();
+                stream.Close();
             }
-            return null;
+            return stream;
+        
         }
     }
 }
