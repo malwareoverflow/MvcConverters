@@ -36,9 +36,10 @@ namespace MvcConverters.Controllers
 
 
         /// <summary>
-       /// Get the Dashboard
-       /// </summary>
-       /// <returns></returns>
+        /// Get the Dashboard
+        /// </summary>
+        /// <returns></returns>
+
         public ActionResult Dashboard()
         {
             methodsRepo.Addtolist("HtmltoPdf");
@@ -61,6 +62,7 @@ namespace MvcConverters.Controllers
         /// <param name="typeofmodel"></param>
         /// <returns></returns>
         [HttpPost]
+        
         public async Task<ActionResult> Dashboard(HttpPostedFileBase file,string typeofmodel)
         {
           
