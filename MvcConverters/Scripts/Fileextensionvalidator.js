@@ -1,4 +1,4 @@
-﻿var _validFileExtensions = [".html", ".pdf", ".docx", ".docm", ".dotx"];
+﻿var _validFileExtensions = [".html", ".pdf", ".docx", ".docm", ".dotx",".html",".htm"];
 function Validate(oForm) {
     console.log("Validate");
     var arrInputs = oForm.getElementsByTagName("input");

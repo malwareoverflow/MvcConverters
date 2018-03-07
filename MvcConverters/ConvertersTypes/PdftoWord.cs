@@ -24,6 +24,7 @@ namespace MvcConverters.ConvertersTypes
             string newfilename = DateTime.Now.ToString("yyyyMMdd_hhmmss");
 
             File.SaveAs(Path.Combine(System.Web.HttpContext.Current.Server.MapPath(@"~/test/"),$"{newfilename}.pdf"));
+            string ToLocation = System.Web.HttpContext.Current.Server.MapPath($"~/test/{newfilename}.docx");
             string pdfFile = System.Web.HttpContext.Current.Server.MapPath($"~/test/{newfilename}.pdf");
             MemoryStream stream = new MemoryStream();
             SautinSoft.PdfFocus f = new SautinSoft.PdfFocus();
@@ -42,22 +43,14 @@ namespace MvcConverters.ConvertersTypes
 
                         string docxFile = Path.ChangeExtension(pdfFile, ".docx");
                       System.IO.File.WriteAllBytes(docxFile, stream.ToArray());
-                        System.Diagnostics.Process.Start(docxFile);
+                        //System.Diagnostics.Process.Start(docxFile);
                     }
                 }
             }
-
-            using (MemoryStream ms = new MemoryStream())
-            using (FileStream file = new FileStream(System.Web.HttpContext.Current.Server.MapPath($"~/test/{newfilename}.docx"), FileMode.Open, FileAccess.Read))
-            {
-                byte[] bytes = new byte[file.Length];
-                file.Read(bytes, 0, (int)file.Length);
-                ms.Write(bytes, 0, (int)file.Length);
-                stream = ms;
-                stream.Flush();
-                stream.Close();
-            }
-
+            stream.Write(System.IO.File.ReadAllBytes(ToLocation.ToString()), 0, System.IO.File.ReadAllBytes(ToLocation.ToString()).Length);
+            stream.Flush();
+            stream.Close();
+          
 
             return stream;
 
