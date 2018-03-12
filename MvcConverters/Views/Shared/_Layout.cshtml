@@ -9,7 +9,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body style="background-color:white">
+<body style="background-color:#f7f7f7">
     <style>
         .navlinkclass {
             color: black;
@@ -19,12 +19,12 @@
 
         .sidenav {
             height: 84%;
-            width: 25px;
+            width: 35px;
             position: fixed;
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #48c4b8;
+            background-color: #203759;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 10px;
@@ -36,7 +36,7 @@
                 padding: 8px 8px 8px 32px;
                 text-decoration: none;
                 font-size: 15px;
-                color: black;
+                color: white;
                 display: block;
                 transition: 0.3s;
             }
@@ -60,61 +60,126 @@
             font-size: 36px;
             margin-left: 50px;
         }
+
+
+        #menu {
+            width: 1090px;
+            height: 25px;
+            list-style: none;
+            border-top: 4px double #AAA;
+            border-bottom: 4px double #AAA;
+            position: relative;
+            text-align: center;
+        }
+
+            #menu li {
+                display: inline-block;
+                width: 150px;
+                margin: 0 10px;
+                position: relative;
+                -webkit-transform: skewy(-3deg);
+                -webkit-backface-visibility: hidden;
+                -webkit-transition: 200ms all;
+            }
+
+                #menu li a {
+                    text-transform: uppercase;
+                    font-family: 'Squada One', cursive;
+                    font-weight: 800;
+                    display: block;
+                    background: #FFF;
+                    padding: 2px 10px;
+                    color: #333;
+                    font-size: 15px;
+                    text-align: center;
+                    text-decoration: none;
+                    position: relative;
+                    z-index: 1;
+                    text-shadow: 1px 1px 0px #FFF, 2px 2px 0px #999, 3px 3px 0px #FFF;
+                    background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,.05) 100%);
+                    -webkit-transition: 1s all;
+                    background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, rgba(0,0,0,.15) 25%, rgba(0,0,0,.15) 50%, transparent 50%, transparent 75%, rgba(0,0,0,.15) 75%);
+                    background-size: 4px 4px;
+                    box-shadow: 0 0 0 1px rgba(0,0,0,.4) inset, 0 0 20px -5px rgba(0,0,0,.4), 0 0 0px 3px #FFF inset;
+                }
+
+                #menu li:hover {
+                    width: 203px;
+                    margin: 0 -5px;
+                }
+
+            #menu a:hover {
+                color: #d90075;
+            }
+
+            #menu li:after,
+            #menu li:before {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 100%;
+                background: #BBB;
+                -webkit-transform: skewY(8deg);
+                x-index: -3;
+                border-radius: 4px;
+            }
+
+            #menu li:after {
+                background-image: -webkit-linear-gradient(left, transparent 0%, rgba(0,0,0,.4) 100%);
+                right: 0;
+                top: -4px;
+            }
+
+            #menu li:before {
+                left: 0;
+                bottom: -4px;
+                background-image: -webkit-linear-gradient(right, transparent 0%, rgba(0,0,0,.4) 100%);
+            }
     </style>
-    <div class="navbar navbar-fixed-top " style="background-color:#48c4b8; border-bottom:solid 2px pink ">
+    <div class="navbar navbar-fixed-top " style="background-color:black; border-bottom:solid 2px pink;">
 
         <div class="container">
             <div class="navbar-header">
-
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                @*@Html.ActionLink("Convert Easy  ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            </div>
 
-            <div class="navbar-collapse collapse">
+            </div>
+            <div id="menu" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("File Converters", "Index", "Home", new { @class = "navlinkclass" })</li>
+                    <li>@Html.ActionLink("File Converters", "Dashboard", "User", new { @class = "navlinkclass" })</li>
                     <li>@Html.ActionLink("Image Converters", "Index", "Home", new { @class = "navlinkclass" })</li>
                     <li>@Html.ActionLink("Voice Convertor", "Index", "Home", new { @class = "navlinkclass" })</li>
 
-
                 </ul>
+
                 @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
-
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <div id="mySidenav" class="sidenav " onmouseover="openNav()" onmouseout="closeNav()">
-
         <h5 style="color:black; margin-left:20px;"> Convert Your Desire Format</h5>
-        <img src="~/Content/images.jpg" />
+
         <hr />
+
         <ul class="list-unstyled">
-
-            <li> <a href="#" class="menubtn">Html To Pdf</a> </li>
-
-            <li>  <a href="#" class="menubtn">pdf to word</a></li>
-
-            <li> <a href="#" class="menubtn">word to pdf</a></li>
-
-           
+            <li style="text-align:center; font-weight:bold"> @Html.ActionLink("Html To Pdf", "HtmltoPdf", "User") </li>
+            <li style="text-align:center; font-weight:bold"> @Html.ActionLink("pdf To word", "HtmltoPdf", "User")</li>
+            <li style="text-align:center; font-weight:bold"> @Html.ActionLink("word To Pdf", "HtmltoPdf", "User")</li>
 
         </ul>
     </div>
 
-
-    <hr style="background-color:transparent"/>
-
-    <div id="mainbody" class="container body-content" style="border:solid 2px pink">
-
+    <hr style="background-color:transparent" />
+    <div id="mainbody" class="container body-content" style="background-color:ghostwhite" ; min-height:300px">
         @RenderBody()
-
 
     </div>
     <footer class="panel-footer navbar-fixed-bottom" style="height:35px">
         <p> Powered by M.Faisal And Taha Tehmuri  &copy;Copyright 2018</p>
+
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -127,13 +192,13 @@ function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
     //document.getElementById("main").style.marginLeft = "250px";
     document.getElementById("mainbody").style.marginLeft = "250px";
-    
+
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "20px";
-    
+
     document.getElementById("mainbody").style.marginLeft = "50px";
-  
+
 }
 </script>

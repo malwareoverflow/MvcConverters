@@ -97,18 +97,39 @@ namespace MvcConverters.Controllers
                 }
                 string ContentType =  modelInstance.GetType().GetProperty("ContentType").GetValue(modelInstance, null).ToString();
                 FileContentResult filecontent = new FileContentResult( ObjectToByteArray( method.Invoke(modelInstance, null)), ContentType);
-                return filecontent;
-             
+                Session["Downloads"] = filecontent;
+                TempData["file"] = "true";
+                return PartialView("Htmltopdf");
+
 
             }
 
-            return View();
+            TempData["Error"] = "No File Found";
+            return PartialView("Htmltopdf");
+
+        }
+
+        /// <summary>
+        /// this method always call to download file
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult downloadfile()
+        {
+            if (Session["download"] != null)
+            {
+                var file = (FileContentResult)Session["Downloads"];
+                return file;
+            }
+            return null;
 
 
         }
 
+        public ActionResult HtmltoPdf()
+        {
 
-
+            return PartialView();
+        }
 
 
 

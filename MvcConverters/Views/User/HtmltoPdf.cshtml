@@ -1,20 +1,181 @@
 ﻿@model MvcConverters.ConvertersTypes.HtmltoPdf
-<h3>Html to Pdf</h3>
-@using (Html.BeginForm("Dashboard", "User", FormMethod.Post, new { enctype = "multipart/form-data" , onsubmit = "Validate(this)" ,@id="htmltopdf"}))
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+}
+<style>
+    .buttonDownload {
+        display: inline-block;
+        position: relative;
+        padding: 10px 25px;
+        background-color: #4CC713;
+        color: white;
+        font-family: sans-serif;
+        text-decoration: none;
+        font-size: 0.9em;
+        text-align: center;
+        text-indent: 15px;
+    }
+
+        .buttonDownload:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .buttonDownload:before, .buttonDownload:after {
+            content: ' ';
+            display: block;
+            position: absolute;
+            left: 15px;
+            top: 52%;
+        }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+    .box2 {
+        background-color: #fff;
+        padding: 18px;
+        height: 250px;
+        width: 500px;
+    }
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .btn {
+        border: 2px solid gray;
+        color: gray;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    body {
+        background-color: #02111b;
+    }
+
+    .logo {
+        margin: 50px auto;
+        text-align: center;
+    }
+
+        .logo a {
+            text-decoration: none;
+            -webkit-transform: perspective(2.5em) rotateX(15deg) scaleY(0.8);
+            -moz-transform: perspective(2.5em) rotateX(15deg) scaleY(0.8);
+            -ms-transform: perspective(2.5em) rotateX(15deg) scaleY(0.8);
+            -o-transform: perspective(2.5em) rotateX(15deg) scaleY(0.8);
+            transform: perspective(2.5em) rotateX(15deg) scaleY(0.8);
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            transition: all 0.5s;
+            display: inline-block;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 25px;
+            font-weight: 700;
+            font-family: 'Exo 2';
+            line-height: 0.8;
+            color: #fbd62a;
+            text-shadow: 0 -1px 15px rgba(0, 0, 0, 0.9), 0 1px 0 #7f6303, 0 3px 0 #846703, 0 5px 0 #896b03, 0 7px 0 #8e6f03, 0 9px 0 #937203, 0 6px 50px rgba(252, 223, 92, 0.8);
+        }
+
+            .logo a:first-line {
+                font-size: 0.8em;
+            }
+
+            .logo a:hover {
+                -webkit-transform: perspective(8em) rotateX(11deg) scale(1.2);
+                -moz-transform: perspective(8em) rotateX(11deg) scale(1.2);
+                -ms-transform: perspective(8em) rotateX(11deg) scale(1.2);
+                -o-transform: perspective(8em) rotateX(11deg) scale(1.2);
+                transform: perspective(8em) rotateX(11deg) scale(1.2);
+                text-shadow: 0 -1px 15px black, 0 1px 0 #7f6303, 0 2px 0 #846703, 0 0px 0 #896b03, 0 1px 0 #8e6f03, 0 2px 0 #937203, 0 2px 30px rgba(252, 223, 92, 0.6);
+            }
+</style>
+
+@using (Html.BeginForm("Dashboard", "User", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "Validate(this)", id = "form1" }))
 {
+    <div>
+        <div class="logo">
+            <a href="#">Html<br>Pdf</a>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <img src="~/Content/pdf-file.jpg" />   <p style="font-weight:bold">PDF files are a portable file format document which can include links and buttons, form fields, audio, video, and business logic. PDF files are very popular because they are portable across different systems but they are not ideal for showing content online and on mobile devices.</p>
+            </div>
+            <div class="col-md-6">
+                <p style="font-weight:bold">HTML5 is the latest version of the markup language that is used to create web pages. HTML can include text, images, links, and interactive content. HTML can be used across different browsers making it ideal for providing a consistent desktop and mobile viewing experience.</p>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <input type="hidden" name="typeofmodel" value="HtmltoPdf" />
+            <div class="col-md-3" style="background-color:white">
+                <input type="file" name="file" id="file" style="border: solid 1px pink; padding:13px; color:green" />
+            </div>
+            <div class="col-md-6">
+                <input type="submit" value="Submit" class="btn btn-4 btn-4a icon-arrow-right" />
+            </div>
+        </div>
 
 
-    @Html.Label("From");
-    @Html.DropDownList("listfrom", (IEnumerable<SelectListItem>)ViewBag.listfrom, "Select From");
-    @Html.Label("To");
-    @Html.DropDownList("listto", (IEnumerable<SelectListItem>)ViewBag.listto, "Select To");
-   
-    <label for="file">Choose File:</label>
-    <input type="file" name="file" id="file" />
-    <input type="hidden" name="typeofmodel" value="HtmltoPdf" />
-    <input type="submit" class="btn btn-primary" value="Convert" id="btntype1"   />
+    </div>
 }
 
 
+<div id="myLoadingElement" style="display: none; margin-left:255px">
+    <img src="~/Content/Images/loader.gif" alt="Loading..." />
+</div>
+
+@if (TempData["Error"] != null)
+{
+
+    <label class="text-danger" style="float:right; font-size:20px">No File Found</label>
+}
+else if (TempData["file"] != null)
+{
+    <p style="margin-top:65px; font-weight:bold;color:chocolate">Your File Is Ready To Download Press Download Button Below  To Download Thank you For Visiting Our Site</p>
+    <input style="margin-left:274px; margin-top:95px" type="button" class="btn btn-4 btn-4a icon-arrow-right" value="Download" onclick="location.href='@Url.Action("downloadfile","User")'" />
 
 
+
+}
+<script>
+
+    $("#form1").submit(function (e) {
+        debugger;
+        $("#myLoadingElement").show();
+    });
+
+
+</script>
